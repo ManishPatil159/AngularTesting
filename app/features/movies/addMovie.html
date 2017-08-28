@@ -1,0 +1,28 @@
+<!--<div>{{"abcd"|length}}</div>-->
+<show-label label="{{routeVM.label}}"></show-label>
+<form name="routeVM.addForm" class="form">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" ng-model="routeVM.newshow.title" required />
+    </div>
+    <div class="form-group">
+        <label>Year</label>
+        <input type="number" min="1900" max="2030" class="form-control" ng-model="routeVM.newshow.year" required />
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <label>Favorite:
+                <input type="checkbox" ng-model="routeVM.newshow.favorite" />
+            </label>
+        </div>
+        <div class="col-xs-6" ng-if="!routeVM.id">
+            <!--<button id="add" class="btn btn-success pull-right" ng-click="routeVM.addShow(routeVM.newshow.title, routeVM.newshow.year,routeVM.newshow.favorite)"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>-->
+                    <button id="add" class="btn btn-success pull-right" ng-click="routeVM.addShow(routeVM.newshow)"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+
+        </div>
+
+        <div class="col-xs-6" ng-if="routeVM.id">
+            <button  id="update" class="btn btn-success pull-right" ng-click="routeVM.updateShow(routeVM.newshow)"><span class="glyphicon"></span> Update</button>
+        </div>
+    </div>
+</form>

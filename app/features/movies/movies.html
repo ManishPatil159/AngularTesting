@@ -1,0 +1,45 @@
+<show-label label="{{routeVM.label}}"></show-label>
+
+<div class="input-group">
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-search"> </span>
+    </span>
+    <input type="text" class="form-control" ng-model="search.title">
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Favorite
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in routeVM.gridItems | filter: search.title  track by $index" ng-if="routeVM.gridItems.length != 0">
+            <td>
+                <a ng-href="#EditMovie/{{item.id}}">{{item.title}}</a>
+            </td>
+            <td>
+                <span>{{item.year}}</span>
+            </td>
+            <td>
+                <span>{{ item.favorite ? "Yes" : "No"}}</span>
+            </td>
+            <td>
+                <button type="button" class="btn btn-default btn-sm" ng-click="routeVM.deleteMovie(item)">
+                    <span class="glyphicon glyphicon-remove"></span> Delete
+                </button>
+            </td>
+        </tr>
+        <tr ng-if="routeVM.gridItems.length === 0">
+            <td colspan="3"> No Records </td>
+        </tr>
+    </tbody>
+</table>
